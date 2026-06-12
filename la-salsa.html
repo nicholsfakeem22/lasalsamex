@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Salsa Mexican Grill &amp; Bar</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f0e8;color:#222;}
+
+  /* NAV */
+  nav{background:#2d6a2d;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-la{color:#f5c518;font-size:26px;font-weight:900;font-style:italic;}
+  .logo-salsa{color:#fff;font-size:26px;font-weight:900;}
+  .logo-mex{background:#c0392b;color:#fff;font-size:13px;font-weight:800;padding:4px 10px;border-radius:5px;letter-spacing:1px;}
+  .hamburger{color:#fff;font-size:26px;cursor:pointer;background:none;border:none;}
+
+  /* HERO */
+  .hero{background:#2d6a2d;padding:36px 20px 30px;text-align:center;position:relative;overflow:hidden;}
+  .hero-badge{background:#f5c518;color:#2d6a2d;font-size:12px;font-weight:800;letter-spacing:2px;padding:8px 20px;border-radius:50px;display:inline-block;margin-bottom:18px;}
+  .hero h1{color:#f5c518;font-size:52px;font-weight:900;line-height:1;}
+  .hero h1 span{color:#fff;}
+  .hero-mex{background:#c0392b;color:#fff;font-size:22px;font-weight:900;padding:8px 30px;border-radius:10px;display:inline-block;margin:8px 0;}
+  .hero-tagline{color:#fff;font-style:italic;font-size:18px;margin:10px 0 22px;}
+  .hero-info{display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto 22px;}
+  .hero-info-row{background:rgba(255,255,255,0.12);border-radius:50px;padding:11px 20px;color:#fff;font-size:15px;display:flex;align-items:center;gap:10px;}
+  .hero-info-row span.icon{font-size:18px;}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-yellow{background:#f5c518;color:#2d6a2d;font-weight:800;font-size:16px;padding:14px 28px;border-radius:50px;border:none;cursor:pointer;text-decoration:none;}
+  .btn-outline{background:transparent;color:#fff;font-weight:800;font-size:16px;padding:14px 28px;border-radius:50px;border:2px solid #fff;cursor:pointer;text-decoration:none;}
+
+  /* CATEGORY NAV */
+  .cat-nav{background:#f5c518;overflow-x:auto;white-space:nowrap;padding:12px 16px;display:flex;gap:6px;}
+  .cat-nav a{display:inline-block;font-size:13px;font-weight:700;color:#2d6a2d;background:transparent;border:none;padding:6px 12px;border-radius:20px;cursor:pointer;text-decoration:none;transition:background .2s;}
+  .cat-nav a:hover,.cat-nav a.active{background:#2d6a2d;color:#fff;}
+
+  /* MENU SECTION */
+  .menu-section{padding:0 14px 14px;}
+  .menu-section h2{font-size:18px;color:#333;font-weight:700;margin:18px 0 10px;}
+  .section-header{border-radius:12px;padding:14px 18px;color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:0;}
+  .section-header.green{background:#2d6a2d;}
+  .section-header.teal{background:#1a6b5c;}
+  .section-header.red{background:#c0392b;}
+  .section-header.orange{background:#e8850a;}
+  .section-header.brown{background:#5c3d2e;}
+  .section-note{background:#e8f5e9;border-radius:10px;padding:11px 16px;color:#2d6a2d;font-size:14px;margin:8px 0;}
+  .section-note.yellow{background:#fff8dc;color:#b8860b;}
+
+  .items-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;}
+  .item-card{background:#fff;border-radius:14px;overflow:hidden;border:1.5px solid #e0e0e0;}
+  .item-card.green-border{border-color:#4caf50;}
+  .item-card.red-border{border-color:#e57373;}
+  .item-card.orange-border{border-color:#ffa726;}
+  .item-card.yellow-border{border-color:#f5c518;}
+  .item-card.teal-border{border-color:#26a69a;}
+  .item-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#eee;}
+  .item-img-placeholder{width:100%;height:110px;display:flex;align-items:center;justify-content:center;font-size:40px;background:#f0f0f0;}
+  .item-body{padding:10px 10px 12px;}
+  .item-name{font-size:14px;font-weight:800;color:#111;line-height:1.3;}
+  .item-desc{font-size:12px;color:#666;margin:3px 0 6px;line-height:1.4;}
+  .item-price{font-size:14px;font-weight:800;}
+  .item-price.green{color:#2d6a2d;}
+  .item-price.red{color:#c0392b;}
+  .item-price.orange{color:#e8850a;}
+
+  /* LIST-STYLE SECTION (Side Orders) */
+  .list-card{background:#e8f5e9;border-radius:14px;padding:16px;margin-top:10px;}
+  .list-card p{font-size:14px;color:#333;line-height:1.8;}
+  .list-card strong{color:#111;}
+
+  /* CONTACT SECTION */
+  .contact-section{background:#2d6a2d;padding:30px 20px;margin-top:20px;}
+  .contact-inner{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .contact-mascot{width:80px;height:80px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:40px;flex-shrink:0;}
+  .contact-title{color:#f5c518;font-size:28px;font-weight:900;}
+  .contact-rows{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;}
+  .contact-row{display:flex;align-items:flex-start;gap:12px;color:#fff;font-size:15px;}
+  .contact-row .icon{font-size:20px;color:#f5c518;flex-shrink:0;margin-top:2px;}
+  .contact-row strong{display:block;}
+  .contact-row a{color:#f5c518;text-decoration:none;font-weight:700;}
+  .btn-call{background:#f5c518;color:#2d6a2d;font-weight:800;font-size:17px;padding:15px 32px;border-radius:50px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+  .map-placeholder{border:2px solid #f5c518;border-radius:14px;height:180px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;margin-top:20px;}
+  .map-placeholder a{color:#f5c518;font-size:15px;text-decoration:underline;}
+
+  footer{background:#1a1a1a;color:#aaa;text-align:center;padding:16px;font-size:13px;}
+
+  @media(max-width:400px){
+    .hero h1{font-size:40px;}
+    .items-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-la">La</span><span class="logo-salsa"> Salsa</span>
+    <span class="logo-mex">MEX</span>
+  </div>
+  <button class="hamburger">☰</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">AUTHENTIC MEXICAN CUISINE · CARROLLTON, GA</div>
+  <h1>La <span>Salsa</span></h1>
+  <div class="hero-mex">MEX</div>
+  <p class="hero-tagline">"Follow the Flavor!"</p>
+  <div class="hero-info">
+    <div class="hero-info-row"><span class="icon">📍</span>1004 Maple St, Carrollton, GA 30117</div>
+    <div class="hero-info-row"><span class="icon">📞</span>770-834-4433</div>
+    <div class="hero-info-row"><span class="icon">🕐</span>Lunch Specials Mon–Fri 11am–3pm</div>
+  </div>
+  <div class="hero-btns">
+    <a href="#menu" class="btn-yellow">View Our Menu ↓</a>
+    <a href="tel:7708344433" class="btn-outline">📞 Call Us</a>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav">
+  <a href="#appetizer">🌮 Appetizer</a>
+  <a href="#nachos">🧀 Nachos</a>
+  <a href="#chicken">🍗 Chicken</a>
+  <a href="#steak">🥩 Steak</a>
+  <a href="#pork">🐷 Pork</a>
+  <a href="#fajitas">🔥 Fajitas</a>
+  <a href="#seafood">🦐 Seafood</a>
+  <a href="#vegetarian">🥦 Vegetarian</a>
+  <a href="#salads">🥗 Salads</a>
+  <a href="#chefs">⭐ Chef's</a>
+  <a href="#lunch">🕐 Lunch</a>
+  <a href="#combinations">🍽️ Combos</a>
+  <a href="#kids">👧 Kids</a>
+  <a href="#desserts">🍮 Desserts</a>
+  <a href="#beverages">🥤 Beverages</a>
+  <a href="#sideorders">📋 Side Orders</a>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="menu-section">
+  <h2>Our Full Menu</h2>
+
+  <!-- APPETIZER -->
+  <div id="appetizer">
+    <div class="section-header green">🌮 Appetizer (Botanas) <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🧀</div>
+        <div class="item-body">
+          <div class="item-name">Cheese Dip</div>
+          <div class="item-price green">Sm $5.50 / Lg $8.50</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥑</div>
+        <div class="item-body">
+          <div class="item-name">Guacamole</div>
+          <div class="item-price green">Sm $5.50 / Lg $8.50</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🫘</div>
+        <div class="item-body">
+          <div class="item-name">Bean Dip</div>
+          <div class="item-price green">Sm $5.25 / Lg $8.25</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥑</div>
+        <div class="item-body">
+          <div class="item-name">Chunky Guacamole</div>
+          <div class="item-price green">Sm $6.99 / Lg $9.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Chicken Wings (10 pc)</div>
+          <div class="item-desc">Crispy golden wings</div>
+          <div class="item-price green">$10.00</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🧀</div>
+        <div class="item-body">
+          <div class="item-name">Cheese Dip Texano w/ Tortilla</div>
+          <div class="item-price green">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🌶️</div>
+        <div class="item-body">
+          <div class="item-name">Chori Queso</div>
+          <div class="item-desc">Chorizo cheese dip</div>
+          <div class="item-price green">Sm $5.99 / Lg $10.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NACHOS -->
+  <div id="nachos" style="margin-top:20px;">
+    <div class="section-header orange">🧀 Nachos <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Beef or Chicken</div>
+          <div class="item-price orange">Sm $6.99 / Lg $8.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🧀</div>
+        <div class="item-body">
+          <div class="item-name">Cheese or Bean</div>
+          <div class="item-price orange">Sm $6.25 / Lg $8.25</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Combo (Beef and Bean)</div>
+          <div class="item-price orange">Sm $7.25 / Lg $9.25</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Supreme</div>
+          <div class="item-desc">Beef or chicken, lettuce, tomato, guacamole and sour cream</div>
+          <div class="item-price orange">Sm $8.99 / Lg $10.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">De Camarones</div>
+          <div class="item-desc">Shrimp or chorizo</div>
+          <div class="item-price orange">$11.75</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">De Fajita</div>
+          <div class="item-desc">Steak or chicken</div>
+          <div class="item-price orange">Sm $8.99 / Lg $10.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHICKEN DISHES -->
+  <div id="chicken" style="margin-top:20px;">
+    <div class="section-header red">🍗 Chicken Dishes <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Grilled Plate</div>
+          <div class="item-desc">Two chicken breasts grilled with onions, rice and beans</div>
+          <div class="item-price red">$11.25</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Tender Plate</div>
+          <div class="item-desc">Three breaded strips topped with cheese salsa, pico de gallo, rice and beans</div>
+          <div class="item-price red">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🥦</div>
+        <div class="item-body">
+          <div class="item-name">Chicken Vegetables</div>
+          <div class="item-desc">Steamed broccoli, carrots and cauliflower topped with grilled chicken and cheese salsa with rice</div>
+          <div class="item-price red">$10.75</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Chicken Vegetables w/ Shrimp</div>
+          <div class="item-price red">$12.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEAK DISHES -->
+  <div id="steak" style="margin-top:20px;">
+    <div class="section-header brown">🥩 Steak Dishes <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">Steak a la Mexicana</div>
+          <div class="item-desc">Chopped steak cooked in spicy red salsa, onions, peppers and tomatoes with rice, beans and tortillas</div>
+          <div class="item-price" style="color:#8d6748;">$12.75</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">Milanesa</div>
+          <div class="item-desc">Breaded steak or chicken with rice, beans and tortillas</div>
+          <div class="item-price" style="color:#8d6748;">$12.75</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">T-Bone Steak</div>
+          <div class="item-desc">Grilled T-bone topped with grilled onions, rice, beans and tortillas</div>
+          <div class="item-price" style="color:#8d6748;">$12.75</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">Carne Asada</div>
+          <div class="item-desc">Grilled sliced steak with rice, beans, pico de gallo and tortillas</div>
+          <div class="item-price" style="color:#8d6748;">$12.75</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORK DISHES -->
+  <div id="pork" style="margin-top:20px;">
+    <div class="section-header red">🐷 Pork Dishes <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">Mexican Pork Chops</div>
+          <div class="item-desc">Grilled pork chops with grilled onions and bell pepper, rice, beans and tortillas</div>
+          <div class="item-price red">$12.75</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍖</div>
+        <div class="item-body">
+          <div class="item-name">Carnitas</div>
+          <div class="item-desc">Pork tips sauteed and fried with special flavor, rice, beans and tortillas</div>
+          <div class="item-price red">$12.75</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAJITAS -->
+  <div id="fajitas" style="margin-top:20px;">
+    <div class="section-header orange">🔥 Fajitas — We Cook'em You Roll'em <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Traditional (Steak or Chicken)</div>
+          <div class="item-desc">Sizzling skillet with rice, beans, tortillas, pico, lettuce, guac and sour cream</div>
+          <div class="item-price orange">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Traditional For Two</div>
+          <div class="item-price orange">$23.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🥦</div>
+        <div class="item-body">
+          <div class="item-name">Veggie Fajitas</div>
+          <div class="item-desc">Garden vegetables</div>
+          <div class="item-price orange">$11.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Fajitas Combo (Steak and Chicken)</div>
+          <div class="item-price orange">$13.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Fajitas Combo For Two</div>
+          <div class="item-price orange">$24.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Texas Fajitas (Steak, Chicken and Shrimp)</div>
+          <div class="item-price orange">$15.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Texas Fajitas For Two</div>
+          <div class="item-price orange">$27.99</div>
+        </div>
+      </div>
+      <div class="item-card orange-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Shrimp Fajitas (18 ct) For Two</div>
+          <div class="item-price orange">$27.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEXICAN SEAFOOD -->
+  <div id="seafood" style="margin-top:20px;">
+    <div class="section-header teal">🦐 Mexican Seafood <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Veracruz Enchilada</div>
+          <div class="item-desc">Two shrimp enchiladas with rice and beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$10.75</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Camarones al Mojo de Ajo</div>
+          <div class="item-desc">Shrimp in garlic salsa with rice and salad</div>
+          <div class="item-price" style="color:#1a6b5c;">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Camarones a la Diabla</div>
+          <div class="item-desc">Spicy shrimp in Mexican salsa with avocado, rice and beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Coctel de Camarones</div>
+          <div class="item-desc">Shrimp cocktail with onions, tomatoes</div>
+          <div class="item-price" style="color:#1a6b5c;">$15.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Camarones a la Mexicana</div>
+          <div class="item-desc">Shrimp cooked Mexican style</div>
+          <div class="item-price" style="color:#1a6b5c;">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Tacos Fish or Shrimp</div>
+          <div class="item-desc">Street-style tacos</div>
+          <div class="item-price" style="color:#1a6b5c;">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Ceviche Camaron Tostada</div>
+          <div class="item-desc">Fresh shrimp ceviche on a crispy tostada</div>
+          <div class="item-price" style="color:#1a6b5c;">$5.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🐟</div>
+        <div class="item-body">
+          <div class="item-name">Ceviche de Pescado</div>
+          <div class="item-desc">Fresh fish ceviche</div>
+          <div class="item-price" style="color:#1a6b5c;">$18.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VEGETARIAN -->
+  <div id="vegetarian" style="margin-top:20px;">
+    <div class="section-header green">🥦 Vegetarian Dishes <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥦</div>
+        <div class="item-body">
+          <div class="item-name">Vege Plate</div>
+          <div class="item-desc">One chalupa, one chile relleno, rice and beans</div>
+          <div class="item-price green">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🌿</div>
+        <div class="item-body">
+          <div class="item-name">Enchiladas del Ranchero</div>
+          <div class="item-desc">Cheese or spinach enchiladas with three-cheese and onions, lettuce and sour cream</div>
+          <div class="item-price green">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">El Burrito y Sus Amigos</div>
+          <div class="item-desc">One bean burrito, one enchilada and rice — w/ Beef or Chicken $10.49</div>
+          <div class="item-price green">$8.75</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🍳</div>
+        <div class="item-body">
+          <div class="item-name">Huevos Rancheros</div>
+          <div class="item-desc">Three eggs scrambled with homemade salsa, rice and beans</div>
+          <div class="item-price green">$8.75</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALADS -->
+  <div id="salads" style="margin-top:20px;">
+    <div class="section-header green">🥗 Ensaladas (Salad) <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥗</div>
+        <div class="item-body">
+          <div class="item-name">Taco Salad</div>
+          <div class="item-desc">Beef or Chicken</div>
+          <div class="item-price green">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥗</div>
+        <div class="item-body">
+          <div class="item-name">Steak, Chicken or Shrimp</div>
+          <div class="item-price green">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥗</div>
+        <div class="item-body">
+          <div class="item-name">Texas Salad</div>
+          <div class="item-price green">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥑</div>
+        <div class="item-body">
+          <div class="item-name">Guacamole Salad</div>
+          <div class="item-price green">$4.99</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🥗</div>
+        <div class="item-body">
+          <div class="item-name">Tossed Salad</div>
+          <div class="item-price green">$3.50</div>
+        </div>
+      </div>
+      <div class="item-card green-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Grilled Chicken Salad</div>
+          <div class="item-desc">Lettuce, tomatoes, cheese and grilled chicken</div>
+          <div class="item-price green">$10.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHEF'S RECOMMENDATIONS -->
+  <div id="chefs" style="margin-top:20px;">
+    <div class="section-header red">⭐ Chef's Recommendations <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Tacos de Carne Asada</div>
+          <div class="item-desc">Three soft corn tacos with steak strips, beans and pico de gallo</div>
+          <div class="item-price red">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Mexican Plate</div>
+          <div class="item-desc">One enchilada with chile con carne, rice and beans</div>
+          <div class="item-price red">$10.75</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Amigo's Favorite</div>
+          <div class="item-desc">Burrito, tamale, taco, rice and beans</div>
+          <div class="item-price red">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Enchilada Dinner</div>
+          <div class="item-desc">Two enchiladas with rice and beans in verde or tomatillo sauce</div>
+          <div class="item-price red">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Spicy Burrito</div>
+          <div class="item-desc">Stuffed with meat, rice and beans supreme</div>
+          <div class="item-price red">$9.75 / Chicken $8.75</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">La Changa</div>
+          <div class="item-desc">Beef or chicken topped with cheese salsa, lettuce, tomatoes, guacamole and sour cream</div>
+          <div class="item-price red">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Plato Grande</div>
+          <div class="item-desc">Chile relleno, tostada, enchilada, taco, burrito and flauta</div>
+          <div class="item-price red">$14.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Flautas (Taquitos)</div>
+          <div class="item-desc">Three crispy taquitos with rice, lettuce, tomatoes and sour cream</div>
+          <div class="item-price red">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Enchiladas Supreme</div>
+          <div class="item-desc">Four enchiladas: beef, chicken, cheese and beans — lettuce, tomatoes and sour cream</div>
+          <div class="item-price red">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Burrito Deluxe</div>
+          <div class="item-desc">Two burritos with beef and beans, red salsa, cheese, lettuce, tomatoes and sour cream</div>
+          <div class="item-price red">$10.99 / $11.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🧀</div>
+        <div class="item-body">
+          <div class="item-name">Quesadillas</div>
+          <div class="item-desc">Two quesadillas baked with beef, chicken, spinach and mushroom, with guacamole or rice</div>
+          <div class="item-price red">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Burrito California</div>
+          <div class="item-desc">Stuffed with meat, rice, beans, lettuce, tomato, sour cream, guacamole, pico and cheese</div>
+          <div class="item-price red">$11.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Fajita Burrito</div>
+          <div class="item-desc">Burrito stuffed with fajita meat, covered with grilled onions and cheese salsa, rice and beans</div>
+          <div class="item-price red">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🦐</div>
+        <div class="item-body">
+          <div class="item-name">Fajita Burrito (Shrimp)</div>
+          <div class="item-price red">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Fajitas Quesadillas</div>
+          <div class="item-desc">Two tortillas grilled with fajita meat, lettuce, tomatoes, pico and sour cream</div>
+          <div class="item-price red">$10.99 / w/ Shrimp $12.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Super Taquitos</div>
+          <div class="item-desc">Two big taquitos with guacamole salad</div>
+          <div class="item-price red">$10.99 / w/ Shrimp $12.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌶️</div>
+        <div class="item-body">
+          <div class="item-name">Chiles Rellenos</div>
+          <div class="item-desc">Two poblano peppers stuffed with cheese, served with rice or guacamole salad</div>
+          <div class="item-price red">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Burrito Supreme</div>
+          <div class="item-desc">Flour tortilla with beef and beans, cream</div>
+          <div class="item-price red">$8.50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW FLAVORS -->
+  <div style="margin-top:20px;">
+    <div class="section-header teal">✨ New Flavors <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🫙</div>
+        <div class="item-body">
+          <div class="item-name">Molcajete</div>
+          <div class="item-desc">Chicken, steak, shrimp, cactus, cheese, chile toreado, onion, rice, beans, salad and tortilla</div>
+          <div class="item-price" style="color:#1a6b5c;">$34.98</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Tacos de Birria (2)</div>
+          <div class="item-desc">With rice and beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$12.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥪</div>
+        <div class="item-body">
+          <div class="item-name">Tortas</div>
+          <div class="item-desc">Classic Mexican sandwich</div>
+          <div class="item-price" style="color:#1a6b5c;">$9.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥪</div>
+        <div class="item-body">
+          <div class="item-name">Tortas with Fries</div>
+          <div class="item-price" style="color:#1a6b5c;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LUNCH SPECIALS -->
+  <div id="lunch" style="margin-top:20px;">
+    <div class="section-header teal">🕐 Lunch Specials <span>∧</span></div>
+    <div class="section-note">Served Monday – Friday · 11:00 A.M. to 3:00 P.M. · One complimentary basket of chips per table</div>
+    <div class="items-grid">
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Pollo Guisado (Stew)</div>
+          <div class="item-price" style="color:#1a6b5c;">$5.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Two Burritos</div>
+          <div class="item-price" style="color:#1a6b5c;">$5.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">One Taco, One Burrito and One Enchilada</div>
+          <div class="item-price" style="color:#1a6b5c;">$7.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">Steak Quesadilla with Rice</div>
+          <div class="item-desc">Served with lettuce, tomatoes, sour cream and cheese salsa</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Rice, Beans and Choice</div>
+          <div class="item-desc">Choice of burrito, quesadilla or enchilada</div>
+          <div class="item-price" style="color:#1a6b5c;">$7.25</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥩</div>
+        <div class="item-body">
+          <div class="item-name">Fajita Quesadilla</div>
+          <div class="item-desc">Steak or chicken with rice or salad</div>
+          <div class="item-price" style="color:#1a6b5c;">$7.49</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌶️</div>
+        <div class="item-body">
+          <div class="item-name">Chile con Carne, Rice and Burrito</div>
+          <div class="item-price" style="color:#1a6b5c;">$7.49</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Chicken and Steamed Veggies</div>
+          <div class="item-desc">With rice topped with cheese salsa</div>
+          <div class="item-price" style="color:#1a6b5c;"></div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Chile Relleno, Flauta and Rice</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Burrito, Taco, Rice and Beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Burrito Supreme</div>
+          <div class="item-desc">With sour cream</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Super Taquitos</div>
+          <div class="item-desc">Two big taquitos with lettuce, tomatoes, sour cream and cheese salsa</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">La Changa</div>
+          <div class="item-desc">Served with salad, rice or beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Two Enchiladas</div>
+          <div class="item-desc">With rice and beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍳</div>
+        <div class="item-body">
+          <div class="item-name">Huevos Rancheros</div>
+          <div class="item-desc">Two ranch-style eggs with salsa, rice and beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Pollo Santa Fe</div>
+          <div class="item-desc">Grilled chicken breast with rice and beans</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Taco Salad</div>
+          <div class="item-desc">Beef or chicken</div>
+          <div class="item-price" style="color:#1a6b5c;">$7.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌯</div>
+        <div class="item-body">
+          <div class="item-name">Spicy Burrito</div>
+          <div class="item-price" style="color:#1a6b5c;">$7.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Enchilada Suprema</div>
+          <div class="item-desc">Three enchiladas: beef, chicken and cheese, with lettuce, tomatoes and sour cream</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.50 / All Beef or Chicken $9.50</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Fajitas Plate (Steak or Chicken)</div>
+          <div class="item-price" style="color:#1a6b5c;">$8.99 / Both $10.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🔥</div>
+        <div class="item-body">
+          <div class="item-name">Fajita Deluxe (Shrimp, Steak and Chicken)</div>
+          <div class="item-price" style="color:#1a6b5c;">$11.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMBINATIONS -->
+  <div id="combinations" style="margin-top:20px;">
+    <div class="section-header brown">🍽️ Combinations <span>∧</span></div>
+    <div class="section-note" style="background:#f0ece8;">Served with Rice and Beans</div>
+    <div class="items-grid">
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Rice, Beans + Chalupa, Quesadilla or Taco Poblano</div>
+          <div class="item-price" style="color:#8d6748;">$8.99</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Rice, Bean + One Burrito, One Enchilada, One Taco</div>
+          <div class="item-price" style="color:#8d6748;">$9.25</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Enchilada, One Burrito</div>
+          <div class="item-price" style="color:#8d6748;">$8.45</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Enchilada, One Tamale, One Flauta</div>
+          <div class="item-price" style="color:#8d6748;">$9.50</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Chile Relleno, One Burrito, One Tamale</div>
+          <div class="item-price" style="color:#8d6748;">$9.50</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Burrito, One Enchilada, One Tamale</div>
+          <div class="item-price" style="color:#8d6748;">$9.50</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Chile Relleno, One Taco Poblano, One Flauta, Tostada</div>
+          <div class="item-price" style="color:#8d6748;">$9.50</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Flauta, Tostada</div>
+          <div class="item-price" style="color:#8d6748;">$9.50</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Tostada, Taco</div>
+          <div class="item-price" style="color:#8d6748;">$10.49</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Two Tacos, One Enchilada, One Burrito</div>
+          <div class="item-price" style="color:#8d6748;">$10.49</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Burrito, One Taco, One Chile Relleno, One Enchilada</div>
+          <div class="item-price" style="color:#8d6748;">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Chile Relleno, Taco, One Burrito, One Enchilada, One Tamale</div>
+          <div class="item-price" style="color:#8d6748;">$11.49</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">One Chile Relleno, One Tamale, One Chalupa, One Tostada</div>
+          <div class="item-price" style="color:#8d6748;">$10.99</div>
+        </div>
+      </div>
+      <div class="item-card" style="border-color:#8d6748;">
+        <div class="item-img-placeholder">🍽️</div>
+        <div class="item-body">
+          <div class="item-name">Burrito, Enchilada and Chile Relleno</div>
+          <div class="item-price" style="color:#8d6748;">$8.49</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIDS MENU -->
+  <div id="kids" style="margin-top:20px;">
+    <div class="section-header orange">👧 Kids Menu <span>∧</span></div>
+    <div class="section-note yellow">Under 12 years old only · Adults add $2.00</div>
+    <div class="items-grid">
+      <div class="item-card yellow-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Rice, Beans and Choice</div>
+          <div class="item-desc">Choice of burrito, enchilada, taco or quesadilla</div>
+          <div class="item-price orange">$5.50</div>
+        </div>
+      </div>
+      <div class="item-card yellow-border">
+        <div class="item-img-placeholder">🍗</div>
+        <div class="item-body">
+          <div class="item-name">Chicken Tenders and Fries</div>
+          <div class="item-price orange">$5.50</div>
+        </div>
+      </div>
+      <div class="item-card yellow-border">
+        <div class="item-img-placeholder">🌭</div>
+        <div class="item-body">
+          <div class="item-name">Hot Dog</div>
+          <div class="item-desc">With french fries or rice and beans</div>
+          <div class="item-price orange">$5.50</div>
+        </div>
+      </div>
+      <div class="item-card yellow-border">
+        <div class="item-img-placeholder">🍔</div>
+        <div class="item-body">
+          <div class="item-name">Cheese Burger and Fries</div>
+          <div class="item-price orange">$5.50</div>
+        </div>
+      </div>
+      <div class="item-card yellow-border">
+        <div class="item-img-placeholder">🌮</div>
+        <div class="item-body">
+          <div class="item-name">Kids Nachos</div>
+          <div class="item-desc">Beef or chicken</div>
+          <div class="item-price orange">$5.50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESSERTS -->
+  <div id="desserts" style="margin-top:20px;">
+    <div class="section-header red">🍮 Desserts <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍦</div>
+        <div class="item-body">
+          <div class="item-name">Deep Fried Ice Cream</div>
+          <div class="item-price red">$4.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍮</div>
+        <div class="item-body">
+          <div class="item-name">Sopapilla</div>
+          <div class="item-price red">$3.50</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍩</div>
+        <div class="item-body">
+          <div class="item-name">Churros</div>
+          <div class="item-price red">$3.99</div>
+        </div>
+      </div>
+      <div class="item-card red-border">
+        <div class="item-img-placeholder">🍦</div>
+        <div class="item-body">
+          <div class="item-name">Sopapilla with Ice Cream</div>
+          <div class="item-price red">$5.50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEVERAGES -->
+  <div id="beverages" style="margin-top:20px;">
+    <div class="section-header teal">🥤 Beverages <span>∧</span></div>
+    <div class="items-grid">
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍵</div>
+        <div class="item-body">
+          <div class="item-name">Tea (Free Re-fills)</div>
+          <div class="item-price" style="color:#1a6b5c;">$2.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥤</div>
+        <div class="item-body">
+          <div class="item-name">Pepsi Products (Free Re-fills)</div>
+          <div class="item-price" style="color:#1a6b5c;">$2.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥛</div>
+        <div class="item-body">
+          <div class="item-name">Milk</div>
+          <div class="item-price" style="color:#1a6b5c;">$2.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">☕</div>
+        <div class="item-body">
+          <div class="item-name">Coffee</div>
+          <div class="item-price" style="color:#1a6b5c;">$2.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍋</div>
+        <div class="item-body">
+          <div class="item-name">Lemonade (Free Re-fills)</div>
+          <div class="item-price" style="color:#1a6b5c;">$2.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥤</div>
+        <div class="item-body">
+          <div class="item-name">Jarritos</div>
+          <div class="item-desc">Mexican soda</div>
+          <div class="item-price" style="color:#1a6b5c;">$3.25</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍚</div>
+        <div class="item-body">
+          <div class="item-name">Horchata</div>
+          <div class="item-desc">House rice drink</div>
+          <div class="item-price" style="color:#1a6b5c;">$3.99 / $4.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🥭</div>
+        <div class="item-body">
+          <div class="item-name">Agua Fresca – Mango</div>
+          <div class="item-price" style="color:#1a6b5c;">$3.99 / $4.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🍓</div>
+        <div class="item-body">
+          <div class="item-name">Agua Fresca – Fresa</div>
+          <div class="item-desc">Strawberry</div>
+          <div class="item-price" style="color:#1a6b5c;">$3.99 / $4.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🌼</div>
+        <div class="item-body">
+          <div class="item-name">Agua Fresca – Maracuya</div>
+          <div class="item-desc">Passion fruit</div>
+          <div class="item-price" style="color:#1a6b5c;">$3.99 / $4.99</div>
+        </div>
+      </div>
+      <div class="item-card teal-border">
+        <div class="item-img-placeholder">🫐</div>
+        <div class="item-body">
+          <div class="item-name">Agua Fresca – Mora</div>
+          <div class="item-desc">Blackberry</div>
+          <div class="item-price" style="color:#1a6b5c;">$3.99 / $4.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDE ORDERS -->
+  <div id="sideorders" style="margin-top:20px;">
+    <div class="section-header green">📋 Side Orders (A La Carta) <span>∧</span></div>
+    <div class="list-card">
+      <p>
+        <strong>1. Beans:</strong> $2.00 / $3.00<br>
+        <strong>2. Carnitas (Pork):</strong> $10.75 / $13.00<br>
+        <strong>3. Grilled Steak:</strong> $12.00 / $14.75<br>
+        <strong>4. Taco:</strong> $2.00<br>
+        <strong>5. Fries:</strong> $2.99<br>
+        <strong>6. Chicken:</strong> $3.00<br>
+        <strong>7. Tamale:</strong> $3.00 / $5.50<br>
+        <strong>8. Burrito Supreme:</strong> $4.50 / $7.25 / $8.50<br>
+        <strong>9. Guacamole:</strong> $1.50<br>
+        <strong>10. Taco Supreme (Beef or Chicken):</strong> $10.75 / $13.00<br>
+        <strong>11. Chile Relleno:</strong> $3.75 / $6.75 / $12.75<br>
+        <strong>12. Fajitas (Steak or Chicken):</strong> $10.75 / $13.50<br>
+        <strong>13. Carne Asada Plate:</strong> $12.99 / $14.99<br>
+        <strong>14. La Changa:</strong> $10.50 / $14.00
+      </p>
+      <br>
+      <p>
+        <strong>Salsa Side Orders:</strong><br>
+        Burro $1.00 · Enchilada $1.00 · Picosa $1.00 · Verde $1.00
+      </p>
+      <br>
+      <p>
+        <strong>Extra Chips:</strong> $2.50 · <strong>Add Cheese Dip to any plate:</strong> $2.25<br>
+        <strong>Extras:</strong> Sour Cream $1.00 · Extra Tomatoes $1.00 · Shredded Cheese $1.50 · Guacamole $1.50 · Lettuce $1.50 · Pico de Gallo $1.50 · Tortilla $1.25
+      </p>
+    </div>
+  </div>
+
+</div><!-- end menu-section -->
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-mascot">🌵</div>
+    <div class="contact-title">Come Visit Us</div>
+  </div>
+  <div class="contact-rows">
+    <div class="contact-row">
+      <span class="icon">📍</span>
+      <div><strong>1004 Maple St</strong>Carrollton, GA 30117</div>
+    </div>
+    <div class="contact-row">
+      <span class="icon">📞</span>
+      <div><a href="tel:7708344433">770-834-4433</a></div>
+    </div>
+    <div class="contact-row">
+      <span class="icon">🕐</span>
+      <div><strong>Lunch Specials</strong>Monday – Friday · 11:00 A.M. – 3:00 P.M.</div>
+    </div>
+  </div>
+  <a href="tel:7708344433" class="btn-call">📞 Call Now</a>
+  <div class="map-placeholder">
+    <a href="https://maps.google.com/?q=1004+Maple+St+Carrollton+GA+30117" target="_blank">📍 Open in Google Maps</a>
+  </div>
+</div>
+
+<footer>© La Salsa Mexican Grill &amp; Bar · 1004 Maple St, Carrollton, GA 30117 · 770-834-4433</footer>
+
+</body>
+</html>
